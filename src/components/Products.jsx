@@ -22,14 +22,19 @@ export const Products = () => {
   }
   const handleSort = (e) => {
     // dispatch sort products on change
+    if(e.target.value==="asc"){
+      dispatch(ltohigh)
+    }else if(e.target.value==="desc"){
+      dispatch(htolow())
+    }
   };
   return (
     <>
       <h2>Products</h2>
       <Select data-testid="product-sort-order" onChange={handleSort}>
         <option>Sort by--</option>
-        <option value="asc" onClick={handleLtoh}>Low to High</option>
-        <option value="desc" onClick={handleHtol}>High to Low</option>
+        <option value="asc" >Low to High</option>
+        <option value="desc" >High to Low</option>
       </Select>
       <div style={{border:"1px solid black", display:"flex", flexWrap:"wrap"}} data-testid="products-container">
         {data.map((item)=>{
